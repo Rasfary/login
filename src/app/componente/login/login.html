@@ -1,0 +1,12 @@
+<div class="login-container">
+    <h2>Entrar</h2>
+    <form [formGroup]="formLogin" (ngSubmit)="entrar()">
+        <label>Email</label>
+        <input type="email" formControlName="email">
+        <span *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched">Email inválido</span>
+        <label>Senha</label>
+        <input type="senha" formControlName="senha">
+        <span *ngIf="formLogin.get('senha')?.invalid && formLogin.get('senha')?.touched">Senha inválida</span>
+        <button type="submit" [disabled]="formLogin.invalid">Acessar</button>
+    </form>
+</div>
