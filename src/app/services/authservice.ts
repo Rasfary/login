@@ -1,29 +1,31 @@
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
- 
+import { map, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private router = inject(Router)
- 
-  login(email: string, senha: string): boolean {
-    if(email === 'admin@email.com' && senha === '123456'){
-      sessionStorage.setItem('token', 'abc-123-token');
-      this.router.navigate(['/home']);
-      return true;
-    }
-    return false
+  private http = inject(HttpClient);
+  login(email: string, senha: string): Observable<boolean> {
+    //return this.http.get<any[]>(`http://localhost:3000/usuarios?email=${email}&senha=${senha}`)
+    return this.http.get<any[]>(`http://localhost:3000/usuario?email=${email}&senha=${senha}`)
+    .pipe(
+        map(usuarios => {
+          if (usuarios.length > 0) {
+            localStorage.setItem('token', 'token-valido-123');
+            return true;
+          }
+          return false;
+        })
+      )
   }
- 
-  logout(){
-    localStorage.removeItem('token')
-    this.router.navigate(['/login']);
-  }
- 
-  estaLogado(): boolean {
-    return !!sessionStorage.getItem('token')
-  }
- 
- 
+logout() {
+  localStorage.removeItem('token')
+  this.router.navigate(['/login']);
+}
+estaLogado(): boolean {
+  return !!localStorage.getItem('token')
+}
 }

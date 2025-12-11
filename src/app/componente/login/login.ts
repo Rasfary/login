@@ -9,15 +9,22 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
+import { routes } from '../../app.routes';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterModule, FormsModule, ReactiveFormsModule, CommonModule],
+   imports: [ReactiveFormsModule,
+    CommonModule,
+    InputTextModule,
+    PasswordModule,
+    ButtonModule,
+    CardModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class Login {
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   formLogin = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -26,14 +33,17 @@ export class Login {
 
   entrar() {
     if(this.formLogin.valid){
-      const {email,senha} = this.formLogin.value;
-      const sucesso = this.authService.login(email!, senha!);
-      if (!sucesso){
-        alert('Usuário ou senha incorretos!');
-      } else {
-        alert('Login realizado com sucesso!');
+      const email = this.formLogin.get('email')!.value!;
+      const senha = this.formLogin.get('senha')!.value!;      
+      this.authService.login(email, senha).subscribe(sucesso => {
+        if (sucesso){
+            this.router.navigate(['/lista']);
+      }
+      });
+    } else {
+        this.formLogin.markAllAsTouched();
       }
     }
   }   
 
-}
+

@@ -1,0 +1,29 @@
+{
+  "usuario": [
+    {
+      "id": "1",
+      "email": "admin@email.com",
+      "senha": "123456",
+      "nome": "Admin"
+    }
+  ],
+  "tarefas": [
+    {
+      "id": "1",
+      "titulo": "Notebook",
+      "data": "08/12/2025",
+      "concluida": true
+    },
+    {
+      "id": "2",
+      "titulo": "Teclado",
+      "data": "07/12/2025",
+      "concluida": true
+    },
+    {
+      "id": "71b7",
+      "titulo": "notebook",
+      "concluida": true
+    }
+  ]
+}

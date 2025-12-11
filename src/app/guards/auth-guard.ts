@@ -12,6 +12,5 @@ export const authGuard: CanActivateFn = (route, state) => {
     alert("Acesso negado! Faça login provideImageKitLoader.");
     router.navigate(['/login']);
     return false;
-  }
-  
+  }  
 };
