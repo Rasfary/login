@@ -1,0 +1,89 @@
+
+/* Container principal */
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Título */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Card de input */
+.card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Botão Adicionar */
+p-button {
+  --button-bg: #4f46e5;
+  --button-color: #fff;
+}
+
+/* Tabela */
+table.mat-table {
+  width: 100%;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th.mat-header-cell {
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+td.mat-cell {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Badge */
+.badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.badge-success {
+  background-color: #10b981;
+}
+
+.badge-danger {
+  background-color: #ef4444;
+}
+
+/* Ícones */
+.pi {
+  font-size: 1.2rem;
+}
+
+/* Botão de exclusão */
+.btn-delete {
+  color: #ef4444;
+  transition: transform 0.2s ease;
+}
+
+.btn-delete:hover {
+  transform: scale(1.1);
+}

@@ -4,6 +4,8 @@ import { Login } from './componente/login/login';
 import { authGuard } from './guards/auth-guard';
 import { Home } from './componente/home/home';
 import { Lista } from './componente/lista/lista';
+import { Resgister } from './componente/resgister/resgister';
+
 
 export const routes: Routes = [
     
@@ -15,7 +17,11 @@ export const routes: Routes = [
     {
         path: 'login',
         component: Login
-    },    
+    },   
+    {
+        path: 'register',
+        component: Resgister
+    },  
     {
         path: 'home',
         component: Home,
@@ -25,7 +31,8 @@ export const routes: Routes = [
         path: 'lista',
         component: Lista,
         canActivate: [authGuard]
-    }, 
+    },
+    
     {
         path: 'Dashboard',
         // Importa o componente só quando o usuário clica
@@ -34,6 +41,7 @@ export const routes: Routes = [
                 .then(m=> m.Dashboard),
                 canActivate:[authGuard]
     },
+    
     {
         path: '**', //RotaCoringa (404)
         redirectTo: ''

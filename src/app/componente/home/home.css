@@ -1,0 +1,30 @@
+
+/* src/app/home/home.component.scss */
+.container {
+  padding: 24px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.nav-card {
+  padding: 0; /* remove padding do botão para o card ocupar toda área */
+  text-align: left;
+}
+
+mat-card {
+  display: block;
+  height: 100%;
+}
+
+.card-avatar mat-icon {
+  font-size: 28px;
+  line-height: 28px;
+}

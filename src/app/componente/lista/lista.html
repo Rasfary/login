@@ -11,13 +11,19 @@
 
     <!-- Título -->
     <ng-container matColumnDef="titulo">
-      <th mat-header-cell *matHeaderCellDef>Título</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <i class="pi pi-list mr-2" aria-hidden="true"></i>
+        Título
+      </th>
       <td mat-cell *matCellDef="let tarefa">{{ tarefa.titulo }}</td>
     </ng-container>
 
     <!-- Status (select true/false) -->
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <i class="pi pi-info-circle mr-2" aria-hidden="true"></i>
+        Status
+      </th>
       <td mat-cell *matCellDef="let tarefa">
         <div class="flex items-center gap-2">
           <!-- Select Material -->
@@ -32,6 +38,14 @@
             </mat-select>
           </mat-form-field>
 
+          <!-- Badge de estado (visual rápido) -->
+          <span
+            class="badge"
+            [class.badge-success]="tarefa.concluida"
+            [class.badge-danger]="!tarefa.concluida">
+            {{ tarefa.concluida ? 'Concluída' : 'Em aberto' }}
+          </span>
+
           <!-- Ícone visual de estado -->
           <i
             class="pi"
@@ -44,7 +58,10 @@
 
     <!-- Ações (lixeira personalizada) -->
     <ng-container matColumnDef="acoes">
-      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <i class="pi pi-cog mr-2" aria-hidden="true"></i>
+        Ações
+      </th>
       <td mat-cell *matCellDef="let tarefa">
         <div class="flex items-center">
           <p-button
@@ -62,3 +79,6 @@
     <tr mat-header-row *matHeaderRowDef="colunas"></tr>
     <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
   </table>
+</div>
+
+  

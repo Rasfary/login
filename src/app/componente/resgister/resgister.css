@@ -1,0 +1,36 @@
+
+/* Espaçamento e layout */
+.login-container {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+  background: #f9fafb;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+  gap: .375rem;
+  margin-bottom: 1rem;
+}
+
+.erro {
+  color: #ef4444; /* vermelho 500 */
+  font-size: .75rem;
+}
+
+.mt-3 { margin-top: .75rem; }
+.ml-1 { margin-left: .25rem; }
+.ml-2 { margin-left: .5rem; }
+.text-center { text-align: center; }
+
+.link {
+  color: #2563eb;
+  text-decoration: none;
+}

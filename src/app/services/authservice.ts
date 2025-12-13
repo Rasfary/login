@@ -8,6 +8,7 @@ import { map, Observable } from 'rxjs';
 export class AuthService {
   private router = inject(Router)
   private http = inject(HttpClient);
+  apiUrl = 'http://localhost:3000';
   login(email: string, senha: string): Observable<boolean> {
     //return this.http.get<any[]>(`http://localhost:3000/usuarios?email=${email}&senha=${senha}`)
     return this.http.get<any[]>(`http://localhost:3000/usuario?email=${email}&senha=${senha}`)
@@ -27,5 +28,8 @@ logout() {
 }
 estaLogado(): boolean {
   return !!localStorage.getItem('token')
+}
+register(usuario: any): Observable<any> {
+return this.http.post<any>(`${this.apiUrl}/usuario`, usuario);
 }
 }

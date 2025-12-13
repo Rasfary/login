@@ -5,6 +5,11 @@
       "email": "admin@email.com",
       "senha": "123456",
       "nome": "Admin"
+    },
+    {
+      "id": "84b3",
+      "email": "henrique.valadao@senacsp.com.br",
+      "senha": "102030"
     }
   ],
   "tarefas": [
@@ -23,7 +28,7 @@
     {
       "id": "71b7",
       "titulo": "notebook",
-      "concluida": true
+      "concluida": false
     }
   ]
 }

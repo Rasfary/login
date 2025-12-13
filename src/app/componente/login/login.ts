@@ -1,3 +1,4 @@
+
 import { Component, inject, NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
@@ -13,37 +14,51 @@ import { routes } from '../../app.routes';
 
 @Component({
   selector: 'app-login',
-   imports: [ReactiveFormsModule,
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
     CommonModule,
     InputTextModule,
     PasswordModule,
     ButtonModule,
-    CardModule],
+    CardModule
+  ],
   templateUrl: './login.html',
-  styleUrl: './login.css',
+  styleUrls: ['./login.css'],
 })
 export class Login {
   private authService = inject(AuthService);
   private router = inject(Router);
 
+  // Tipar os controles como string para evitar 'string | null'
   formLogin = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    senha: new FormControl('', [Validators.required, Validators.minLength(6)])
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    senha: new FormControl<string>('', [Validators.required, Validators.minLength(6)]),
   });
 
   entrar() {
-    if(this.formLogin.valid){
-      const email = this.formLogin.get('email')!.value!;
-      const senha = this.formLogin.get('senha')!.value!;      
-      this.authService.login(email, senha).subscribe(sucesso => {
-        if (sucesso){
-            this.router.navigate(['/lista']);
-      }
+    if (this.formLogin.valid) {
+      const email = this.formLogin.get('email')!.value as string;
+      const senha = this.formLogin.get('senha')!.value as string;
+
+      this.authService.login(email, senha).subscribe({
+        next: (sucesso) => {
+          if (sucesso) {
+            this.router.navigate(['/home']);
+          } else {
+            // Falha na autenticação: vá para Register
+            this.router.navigate(['/register']);
+          }
+        },
+        error: (err) => {
+          // Erro também direcione para Register
+          console.error('Erro na autenticação:', err);
+          this.router.navigate(['/register']);
+        },
       });
     } else {
-        this.formLogin.markAllAsTouched();
-      }
+      // Form inválido: vá para Register
+      this.router.navigate(['/register']);
     }
-  }   
-
-
+  }
+}
