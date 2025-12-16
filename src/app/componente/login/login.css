@@ -1,4 +1,4 @@
-.login-container {
+/* .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,4 +7,85 @@
 
 p-card {
   width: 350px;
+}
+ */
+
+/* Container geral: centraliza o card e define espaçamento externo */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;         /* vertical */
+  justify-content: center;     /* horizontal */
+  padding: 1.5rem;             /* respiro nas bordas */
+  background: #f8f9fa;         /* opcional: leve fundo */
+}
+
+/* Card: largura máxima e preenchimento interno */
+.login-card {
+  width: 100%;
+  max-width: 420px;            /* bom para formulários de login */
+  padding: 1.25rem;            /* compensa o espaço interno do card */
+}
+
+/* Formulário: usa grid com gap para espaçamento uniforme entre blocos */
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;                   /* espaço vertical entre .p-field e o .btn-container */
+}
+
+/* Campo individual: título, input e mensagem de erro bem espaçados */
+.p-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;                 /* espaço entre label, input e small */
+}
+
+/* Label: deixa mais legível */
+.p-field label {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Inputs (pInputText e p-password) preenchem a largura do container */
+.p-field input[pInputText],
+.p-field .p-password,
+.p-field .p-inputtext {
+  width: 100%;
+}
+
+/* Mensagens de erro: discretas e com respiro */
+small.erro {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Container do botão: alinhamento e espaçamento superior */
+.btn-container {
+  margin-top: 0.5rem;
+}
+
+/* Deixa o botão realmente ocupar toda a largura do card */
+.btn-container .p-button,
+.btn-container .w-full {
+  width: 100%;
+}
+
+/* Ajustes finos para foco/acessibilidade (opcional) */
+.p-field input:focus,
+.p-field .p-password input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(63,81,181,0.15);
+  border-color: #3f51b5;
+}
+
+/* Responsividade extra em telas muito pequenas */
+@media (max-width: 360px) {
+  .login-card {
+    padding: 1rem;
+  }
+  form {
+    gap: 0.875rem;
+  }
 }
