@@ -1,1 +1,52 @@
-<p>dashboard works!</p>
+<div class="bg">
+  <div class="dashboard-wrapper">
+    <div class="dashboard-header">
+      <h1>Dashboard</h1>
+      <p>Visão geral das suas tarefas</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card todo">
+        <span class="label">A Fazer</span>
+        <span class="value">{{ todo.length }}</span>
+      </div>
+      <div class="stat-card done">
+        <span class="label">Feitas</span>
+        <span class="value">{{ done.length }}</span>
+      </div>
+    </div>
+
+    <div class="board">
+      <div class="column">
+        <h3>A Fazer</h3>
+        <div
+          cdkDropList
+          id="todo"
+          [cdkDropListData]="todo"
+          [cdkDropListConnectedTo]="['done']"
+          (cdkDropListDropped)="drop($event)"
+          class="list">
+          <div *ngFor="let item of todo; trackBy: trackById" cdkDrag class="card">
+            {{ item.titulo }}
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3>Feito</h3>
+        <div
+          cdkDropList
+          id="done"
+          [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="['todo']"
+          (cdkDropListDropped)="drop($event)"
+          class="list">
+          <div *ngFor="let item of done; trackBy: trackById" cdkDrag class="card done">
+            {{ item.titulo }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 

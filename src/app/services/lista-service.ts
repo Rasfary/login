@@ -14,6 +14,7 @@ export interface Tarefa {
   providedIn: 'root',
 })
 export class ListaService {
+ 
   private http = inject(HttpClient);
   // endpoint
   private apiurl = 'http://localhost:3000/tarefas';
@@ -44,7 +45,11 @@ export class ListaService {
   atualizarStatus(id: string, concluida: boolean): Observable<Tarefa> {
     return this.http.patch<Tarefa>(`${this.apiurl}/${id}`, { concluida });
   }
-
+  atualizar(tarefa: Tarefa, concluida: boolean): Observable<Tarefa> {
+    return this.http.put<Tarefa>(`${this.apiurl}/${tarefa.id}`, { 
+      ...tarefa, concluida 
+    });  
+  }
   /**
    * (Opcional) Atualização completa de uma tarefa via PUT:
    * útil se você quiser enviar todo o objeto.
